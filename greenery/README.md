@@ -2,11 +2,13 @@
 ### Part 4 of the Week 1 Assignment
 
 **1. How many users do we have?**
+
 Query: ```SELECT COUNT(user_id) FROM _stg_postgres__users```
 
 Answer: 130
 
 **2. On average, how many orders do we receive per hour?**
+
 Query: ```SELECT
     COUNT(order_id) / ((MAX(created_at)::DATE - MIN(created_at)::DATE + 1) * 24) AS avg_orders_per_hour
 FROM 
@@ -15,6 +17,7 @@ FROM
 Answer: 7.520833
 
 **3. On average, how long does an order take from being placed to being delivered?**
+
 Query: ```SELECT AVG(DATEDIFF('day', created_at, delivered_at)) AS avg_delivery_time_days
 FROM _stg_postgres__orders
 WHERE delivered_at IS NOT NULL```
@@ -22,6 +25,7 @@ WHERE delivered_at IS NOT NULL```
 Answer: 3.891803 days
 
 **4. How many users have only made one purchase? Two purchases? Three+ purchases?**
+
 Query: ```SELECT
   order_groups AS n_orders,
   COUNT(*) AS n_users
@@ -48,6 +52,7 @@ Answer:
 | 3 | 71 |
 
 **5. On average, how many unique sessions do we have per hour?**
+
 Query: ```SELECT
 COUNT(DISTINCT session_id) / COUNT(DISTINCT user_id)
 FROM _stg_postgres__events```
