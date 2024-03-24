@@ -3,6 +3,7 @@
 
 **1. How many users do we have?**
 Query: ```SELECT COUNT(user_id) FROM _stg_postgres__users```
+
 Answer: 130
 
 **2. On average, how many orders do we receive per hour?**
@@ -10,12 +11,14 @@ Query: ```SELECT
     COUNT(order_id) / ((MAX(created_at)::DATE - MIN(created_at)::DATE + 1) * 24) AS avg_orders_per_hour
 FROM 
     _stg_postgres__orders```
+
 Answer: 7.520833
 
 **3. On average, how long does an order take from being placed to being delivered?**
 Query: ```SELECT AVG(DATEDIFF('day', created_at, delivered_at)) AS avg_delivery_time_days
 FROM _stg_postgres__orders
 WHERE delivered_at IS NOT NULL```
+
 Answer: 3.891803 days
 
 **4. How many users have only made one purchase? Two purchases? Three+ purchases?**
@@ -35,6 +38,7 @@ FROM (
 ) AS order_counts
 GROUP BY order_groups
 ORDER BY order_groups```
+
 Answer: 
 
 | N_ORDERS | N_USERS |
@@ -47,6 +51,7 @@ Answer:
 Query: ```SELECT
 COUNT(DISTINCT session_id) / COUNT(DISTINCT user_id)
 FROM _stg_postgres__events```
+
 Answer: 4.661290
 
 
