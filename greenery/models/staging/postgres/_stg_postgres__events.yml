@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: _stg_postgres__events
+    description: Events occuring on the Greenery platform.
+    columns:
+      - name: event_id
+        description: Unique identifier for the individual event.
+        tests:
+          - not_null
+          - unique
+      - name: session_id
+        tests:
+          - not_null
+        description: Identifier for the session in which a single or group of events take place.
+      - name: user_id
+        tests:
+          - not_null
+        description: Unique identifier for the user.
+      - name: event_type
+        tests:
+          - not_null
+        description: The type of the event recorded on the Greenery platform (ex. 'page_view', 'add_to_cart').
+      - name: page_url
+        description: The URL of the page where the event occurred, providing context for page-specific actions.
+      - name: event_created_at_utc
+        tests:
+          - not_null
+        description: The timestamp when the event was created, in UTC.
+      - name: order_id
+        tests:
+          - not_null
+        description: Identifier for the order associated with the event, if applicable.
+      - name: product_id
+        tests:
+          - not_null
+        description: Identifier for the product involved in the event.

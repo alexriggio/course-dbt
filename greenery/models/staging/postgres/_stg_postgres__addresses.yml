@@ -1,0 +1,27 @@
+version: 2
+
+models: 
+  - name: _stg_postgres__addresses
+    description: Addresses that orders placed on the Greenery platform are shipped to.
+    columns:
+      - name: address_id
+        tests:
+          - not_null
+          - unique
+        description: Unique identifier for each address record.
+      - name: address
+        tests:
+          - not_null
+        description: The street address where orders are shipped.
+      - name: zipcode
+        tests:
+          - not_null
+        description: The postal code associated with the address.
+      - name: state
+        tests:
+          - not_null
+        description: The state or region of the address.
+      - name: country
+        tests:
+          - not_null
+        description: The country of the address.

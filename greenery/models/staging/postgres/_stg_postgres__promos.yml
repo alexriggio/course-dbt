@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: _stg_postgres__promos
+    description: Promos offered on the Greenery platform.
+    columns:
+      - name: promo_id
+        tests:
+          - not_null
+          - unique
+        description: The unique identifier for each promotional campaign.
+      - name: promo_discount
+        tests:
+          - not_null
+        description: The percentage of the discount.
+      - name: promo_status
+        tests:
+          - not_null
+        description: The current status of the promotional campaign, indicating whether it is active or inactive.

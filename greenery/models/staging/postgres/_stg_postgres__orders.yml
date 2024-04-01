@@ -1,0 +1,63 @@
+version: 2
+
+models:
+  - name: _stg_postgres__orders
+    description: Orders placed on the Greenery platform.
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
+        description: The unique identifier for each order.
+      - name: promo_id
+        description: Identifier for any promotional discounts applied to the order.
+      - name: user_id
+        tests:
+          - not_null
+        description: The ID of the user who placed the order.
+      - name: shipping_address_id
+        tests:
+          - not_null
+        description: The ID of the shipping address for the order.
+      - name: created_at_utc
+        tests:
+          - not_null
+        description: Timestamp when the order was placed, in UTC.
+      - name: order_cost
+        tests:
+          - not_null
+          - positive_values
+        description: The cost of the order before shipping and discounts.
+      - name: shipping_cost
+        tests:
+          - not_null
+          - positive_values
+        description: The cost of shipping for the order.
+      - name: order_total
+        tests:
+          - not_null
+          - positive_values
+        description: The total cost of the order after discounts and shipping costs are applied.
+      - name: tracking_id
+        tests:
+          - not_null
+          - unique
+        description: The tracking ID provided by the shipping service for order tracking.
+      - name: shipping_service
+        tests:
+          - not_null
+        description: The shipping service used for the order, e.g., USPS, FedEx.
+      - name: estimated_delivery_at_utc
+        tests:
+        - date_after:
+              before_date_column: created_at_utc
+        description: The estimated delivery date and time for the order, in UTC.
+      - name: delivered_at_utc
+        tests:
+          - date_after:
+              before_date_column: created_at_utc 
+        description: The date and time the order was actually delivered, in UTC.
+      - name: order_status
+        tests:
+          - not_null
+        description: The current status of the order, such as 'shipped' or 'delivered'.

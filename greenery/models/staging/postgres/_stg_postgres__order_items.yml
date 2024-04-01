@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: _stg_postgres__order_items
+    description: Items ordered on the Greenery platform.
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+        description: Identifies the order to which the item belongs.
+      - name: product_id
+        tests:
+          - not_null
+        description: Specifies the product included in the order.
+      - name: product_quantity
+        tests:
+          - not_null
+        description: Indicates the quantity of the product in the order.

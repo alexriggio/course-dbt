@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: _stg_postgres__products
+    description: The products that are offered on the Greenery platform.
+    columns:
+      - name: product_id
+        tests:
+          - not_null
+          - unique
+        description: The unique identifier for each product.
+      - name: product_name
+        tests:
+          - not_null
+        description: The name of the product.
+      - name: product_price
+        tests:
+          - not_null
+          - positive_values
+        description: The selling price of the product.
+      - name: product_inventory_level
+        tests:
+          - not_null
+          - positive_values
+        description: The current inventory level for the product, indicating how many units are available for sale.

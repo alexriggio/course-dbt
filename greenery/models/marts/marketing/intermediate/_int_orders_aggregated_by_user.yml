@@ -1,0 +1,4 @@
+version: 2
+
+models: 
+  - name: _int_orders_aggregated_by_user

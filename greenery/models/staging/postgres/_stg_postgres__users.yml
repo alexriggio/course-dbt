@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: _stg_postgres__users 
+    description: The users on the Greenery platform.
+    columns:
+      - name: user_id
+        tests:
+          - not_null
+          - unique
+        description: The unique identifier for each user.
+      - name: first_name
+        tests:
+            - not_null
+        description: The user's first name.
+      - name: last_name
+        tests:
+          - not_null
+        description: The user's last name.
+      - name: email
+        tests:
+          - not_null
+          - email_format
+        description: The user's email address.
+      - name: phone_number
+        tests:
+          - not_null
+        description: The user's phone number.
+      - name: user_created_at_utc
+        tests:
+          - not_null
+        description: The timestamp when the user's account was created, in UTC.
+      - name: user_updated_at_utc
+        tests:
+          - not_null
+          - date_after:
+              before_date_column: user_created_at_utc 
+        description: The timestamp of the last update made to the user's account, in UTC.
+      - name: user_address_id
+        tests:
+          - not_null
+        description: The unique identifier for the user's address.
+
