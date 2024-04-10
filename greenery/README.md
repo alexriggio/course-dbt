@@ -1,7 +1,9 @@
 ## Analytics Engineering with dbt
 ### Week 3 Assignment
-#### Part 1: Create new models
+##### Part 1: Create new models
+
 **1. What is our overall conversion rate?**
+
 Conversion Rate = # of unique sessions with a purchase event / total number of unique sessions
 
 Query: 
@@ -13,6 +15,7 @@ FROM groupby_session;
 Answer: 0.624567
 
 **2. What is our conversion rate by product?**
+
 Query: 
 ```
 SELECT
@@ -60,7 +63,9 @@ Answer:
 |Pothos|	0.344262|
 
 ### Part 6: dbt Snapshots
-**1. What is our overall conversion rate?**
+
+**1. Which products had their inventory change from week 2 to week 3?**
+
 Query: 
 ```
 WITH week2 AS (
@@ -89,6 +94,7 @@ LEFT JOIN week3
 WHERE week3.inventory IS NOT NULL
 AND week2.inventory != week3.inventory
 ```
+Answer:
 | Name | INVENTORY_2 | INVENTORY_3 |
 | ------ | ------ | ------ |
 | Philodendron | 25 | 30 |
