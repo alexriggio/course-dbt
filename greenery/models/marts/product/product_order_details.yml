@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: product_order_details
+    description: ""
+    columns:
+      - name: order_id
+        data_type: varchar
+        description: "The unique identifier for each order."
+
+      - name: product_id
+        data_type: varchar
+        description: "The unique identifier for each product."
+
+      - name: product_name
+        data_type: varchar
+        description: "The name of the product."
+
+      - name: product_quantity
+        data_type: number
+        description: "Indicates the quantity of the product in the order."
+
+      - name: unit_price
+        data_type: float
+        description: ""
+
+      - name: order_created_at_utc
+        data_type: timestamp_ntz
+        description: ""
+

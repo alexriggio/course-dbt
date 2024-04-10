@@ -1,4 +1,101 @@
 ## Analytics Engineering with dbt
+### Week 3 Assignment
+#### Part 1: Create new models
+**1. What is our overall conversion rate?**
+Conversion Rate = # of unique sessions with a purchase event / total number of unique sessions
+
+Query: 
+```
+SELECT 
+    SUM(checkout_flag) / COUNT(checkout_flag) AS overall_conversion_rate
+FROM groupby_session;
+```
+Answer: 0.624567
+
+**2. What is our conversion rate by product?**
+Query: 
+```
+SELECT
+    p.product_id,
+    p.product_name AS product_name,
+    SUM(checkout_flag) / COUNT(checkout_flag) AS product_conversion_rate
+FROM groupby_product_session as e
+JOIN DEV_DB.DBT_ALEXMRIGGIOGMAILCOM._STG_POSTGRES__PRODUCTS AS p
+    ON e.product_id = p.product_id
+GROUP BY p.product_id, p.product_name 
+ORDER BY SUM(checkout_flag) / COUNT(checkout_flag) DESC;
+```
+Answer:
+| PROD_NAME | CONV_RATE |
+| ------ | ------ |
+|String of pearls|	0.609375|
+|Arrow Head|	0.555556|
+|Cactus|	0.545455|
+|ZZ Plant|	0.539683|
+|Bamboo|	0.537313|
+|Rubber Plant|	0.518519|
+|Monstera|	0.510204|
+|Calathea Makoyana|	0.509434|
+|Fiddle Leaf Fig|	0.500000|
+|Majesty Palm|	0.492537|
+|Aloe Vera|	0.492308|
+|Devil's Ivy|	0.488889|
+|Philodendron|	0.483871|
+|Jade Plant|	0.478261|
+|Spider Plant|	0.474576|
+|Pilea Peperomioides|	0.474576|
+|Dragon Tree|	0.467742|
+|Money Tree|	0.464286|
+|Orchid|	0.453333|
+|Bird of Paradise|	0.450000|
+|Ficus|	0.426471|
+|Birds Nest Fern|	0.423077|
+|Pink Anthurium|	0.418919|
+|Boston Fern|	0.412698|
+|Alocasia Polly|	0.411765||
+|Peace Lily|	0.409091|
+|Ponytail Palm|	0.400000|
+|Snake Plant|	0.397260|
+|Angel Wings Begonia|	0.393443|
+|Pothos|	0.344262|
+
+### Part 6: dbt Snapshots
+**1. What is our overall conversion rate?**
+Query: 
+```
+WITH week2 AS (
+SELECT 
+* 
+FROM dev_db.dbt_alexmriggiogmailcom.products_snapshot
+WHERE dbt_valid_from = '2024-04-01 02:27:46.032'
+),
+
+week3 AS(
+SELECT
+*
+FROM dev_db.dbt_alexmriggiogmailcom.products_snapshot
+WHERE dbt_valid_from = '2024-04-09 23:27:07.750'
+)
+
+SELECT
+week2.product_id,
+week2.name,
+week2.price,
+week2.inventory AS inventory_2,
+week3.inventory AS inventory_3
+FROM week2
+LEFT JOIN week3
+    ON week2.product_id = week3.product_id
+WHERE week3.inventory IS NOT NULL
+AND week2.inventory != week3.inventory
+```
+| Name | INVENTORY_2 | INVENTORY_3 |
+| ------ | ------ | ------ |
+| Philodendron | 25 | 30 |
+| Monstera | 64 | 31 |
+_______________________________________________
+_______________________________________________
+
 ### Week 2 Assignment
 ##### Part 1: Models
 

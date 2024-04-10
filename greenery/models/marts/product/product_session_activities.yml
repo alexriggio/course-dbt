@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: product_session_activities
+    description: ""
+    columns:
+      - name: product_id
+        data_type: varchar
+        description: "Identifier for the product involved in the event."
+
+      - name: session_id
+        data_type: varchar
+        description: "Identifier for the session in which a single or group of events take place."
+
+      - name: session_start
+        data_type: timestamp_ntz
+        description: ""
+
+      - name: session_end
+        data_type: timestamp_ntz
+        description: ""
+
+      - name: session_length_minutes
+        data_type: number
+        description: ""
+
+      - name: page_view
+        data_type: number
+        description: ""
+
+      - name: add_to_cart
+        data_type: number
+        description: ""
+
+      - name: checkout
+        data_type: number
+        description: ""
+
+      - name: package_shipped
+        data_type: number
+        description: ""
+

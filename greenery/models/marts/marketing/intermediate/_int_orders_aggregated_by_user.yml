@@ -1,4 +1,74 @@
 version: 2
 
-models: 
+models:
   - name: _int_orders_aggregated_by_user
+    description: ""
+    columns:
+      - name: user_id
+        data_type: varchar
+        description: "The ID of the user who placed the order."
+
+      - name: total_orders
+        data_type: number
+        description: ""
+
+      - name: orders_last_30_days
+        data_type: number
+        description: ""
+
+      - name: orders_last_90_days
+        data_type: number
+        description: ""
+
+      - name: orders_last_365_days
+        data_type: number
+        description: ""
+
+      - name: single_order_flag
+        data_type: number
+        description: ""
+
+      - name: multiple_orders_flag
+        data_type: number
+        description: ""
+
+      - name: total_order_cost
+        data_type: float
+        description: ""
+
+      - name: average_order_cost
+        data_type: float
+        description: ""
+
+      - name: total_shipping_cost
+        data_type: float
+        description: ""
+
+      - name: average_shipping_cost
+        data_type: float
+        description: ""
+
+      - name: total_cost
+        data_type: float
+        description: ""
+
+      - name: average_cost
+        data_type: float
+        description: ""
+
+      - name: total_promos
+        data_type: number
+        description: ""
+
+      - name: promo_use_rate
+        data_type: number
+        description: ""
+
+      - name: first_order_date_utc
+        data_type: timestamp_ntz
+        description: ""
+
+      - name: last_order_date_utc
+        data_type: timestamp_ntz
+        description: ""
+

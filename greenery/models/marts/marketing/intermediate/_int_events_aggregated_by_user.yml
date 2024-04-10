@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: _int_events_aggregated_by_user
+    description: ""
+    columns:
+      - name: user_id
+        data_type: varchar
+        description: "Unique identifier for the user."
+
+      - name: total_page_views
+        data_type: number
+        description: ""
+
+      - name: unique_page_views
+        data_type: number
+        description: ""
+
+      - name: total_add_to_carts
+        data_type: number
+        description: ""
+
+      - name: total_checkouts
+        data_type: number
+        description: ""
+
+      - name: total_sessions
+        data_type: number
+        description: ""
+

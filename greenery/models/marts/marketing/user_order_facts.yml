@@ -1,0 +1,118 @@
+version: 2
+
+models:
+  - name: user_order_facts
+    description: ""
+    columns:
+      - name: user_id
+        data_type: varchar
+        description: "The unique identifier for each user."
+
+      - name: user_created_at_utc
+        data_type: timestamp_ntz
+        description: "The timestamp when the user's account was created, in UTC."
+
+      - name: user_updated_at_utc
+        data_type: timestamp_ntz
+        description: "The timestamp of the last update made to the user's account, in UTC."
+
+      - name: user_address_id
+        data_type: varchar
+        description: "The unique identifier for the user's address."
+
+      - name: user_address
+        data_type: varchar
+        description: ""
+
+      - name: user_zipcode
+        data_type: number
+        description: ""
+
+      - name: user_state
+        data_type: varchar
+        description: ""
+
+      - name: user_country
+        data_type: varchar
+        description: ""
+
+      - name: total_orders
+        data_type: number
+        description: ""
+
+      - name: single_order_flag
+        data_type: number
+        description: ""
+
+      - name: multiple_orders_flag
+        data_type: number
+        description: ""
+
+      - name: orders_last_30_days
+        data_type: number
+        description: ""
+
+      - name: orders_last_90_days
+        data_type: number
+        description: ""
+
+      - name: orders_last_365_days
+        data_type: number
+        description: ""
+
+      - name: total_order_cost
+        data_type: float
+        description: ""
+
+      - name: average_order_cost
+        data_type: float
+        description: ""
+
+      - name: total_shipping_cost
+        data_type: float
+        description: ""
+
+      - name: average_shipping_cost
+        data_type: float
+        description: ""
+
+      - name: total_cost
+        data_type: float
+        description: ""
+
+      - name: average_cost
+        data_type: float
+        description: ""
+
+      - name: total_promos
+        data_type: number
+        description: ""
+
+      - name: promo_use_rate
+        data_type: number
+        description: ""
+
+      - name: first_order_date_utc
+        data_type: timestamp_ntz
+        description: ""
+
+      - name: last_order_date_utc
+        data_type: timestamp_ntz
+        description: ""
+
+      - name: total_page_views
+        data_type: number
+        description: ""
+
+      - name: unique_page_views
+        data_type: number
+        description: ""
+
+      - name: total_add_to_carts
+        data_type: number
+        description: ""
+
+      - name: total_checkouts
+        data_type: number
+        description: ""
+

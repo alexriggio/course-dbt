@@ -1,4 +1,11 @@
-{{ config(materialized='table') }}
+{{ 
+    config(
+        materialized='table',
+        post_hook=[
+            "{{ grant('reporting') }}"
+        ]  
+    )  
+}}
 
 WITH users AS (
     SELECT
